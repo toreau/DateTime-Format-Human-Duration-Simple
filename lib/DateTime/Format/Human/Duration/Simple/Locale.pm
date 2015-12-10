@@ -2,7 +2,7 @@ package DateTime::Format::Human::Duration::Simple::Locale;
 use Moose;
 use namespace::autoclean;
 
-has 'oxford_comma' => (
+has 'serial_comma' => (
     isa     => 'Bool',
     is      => 'ro',
     default => 1,

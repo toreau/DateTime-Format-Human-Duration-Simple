@@ -87,18 +87,27 @@ my @tests = (
         result => '1 año, 2 meses, 3 días, 4 horas, 5 minutos y 6 segundos',
     },
 
-    # Override 'oxford_comma' tests.
+    # Override 'serial_comma' tests.
     {
+        # Language tests
         name   => 'Test 5',
-        args   => { locale => 'de', oxford_comma => 1 },
+        args   => { serial_comma => 0 },
+        from   => $now,
+        to     => $now->clone->add( years => 1, months => 2, days => 3, hours => 4, minutes => 5, seconds => 6 ),
+        result => '1 year, 2 months, 3 days, 4 hours, 5 minutes and 6 seconds',
+    },
+
+    {
+        name   => 'Test 6',
+        args   => { locale => 'de', serial_comma => 1 },
         from   => $now,
         to     => $now->clone->add( years => 1, months => 2, days => 3, hours => 4, minutes => 5, seconds => 6 ),
         result => '1 Jahr, 2 Monate, 3 Tage, 4 Stunden, 5 Minuten, und 6 Sekunden',
     },
 
     {
-        name   => 'Test 6',
-        args   => { oxford_comma => 0 },
+        name   => 'Test 7',
+        args   => { serial_comma => 0 },
         from   => $now,
         to     => $now->clone->add( hours => 1, seconds => 25, nanoseconds => 445_499_897 ),
         result => '1 hour, 25 seconds, 445 milliseconds and 499897 nanoseconds',
@@ -106,15 +115,15 @@ my @tests = (
 
     # Misc tests.
     {
-        name   => 'Test 7',
-        args   => { oxford_comma => 0, locale => 'no' },
+        name   => 'Test 8',
+        args   => { serial_comma => 0, locale => 'no' },
         from   => $now,
         to     => $now->clone->add( hours => 1, seconds => 25, nanoseconds => 445_499_897 ),
         result => '1 time, 25 sekunder, 445 millisekunder og 499897 nanosekunder',
     },
 
     {
-        name   => 'Test 8',
+        name   => 'Test 9',
         args   => { locale => 'no' },
         from   => $now,
         to     => $now->clone->add( hours => 1, seconds => 25, nanoseconds => 445_499_897 ),
@@ -122,7 +131,7 @@ my @tests = (
     },
 
     {
-        name   => 'Test 9',
+        name   => 'Test 10',
         from   => $now,
         to     => $now->clone->add( days => 14 ),
         result => '2 weeks',

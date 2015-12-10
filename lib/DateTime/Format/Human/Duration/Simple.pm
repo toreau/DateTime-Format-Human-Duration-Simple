@@ -33,9 +33,10 @@ our $VERSION = '0.01';
     );
 
     my $duration = DateTime::Format::Human::Duration::Simple->new(
-        from   => $from,
-        to     => $to,
-        # locale => 'en', # default is 'en' (English)
+        from           => $from, # required
+        to             => $to,   # required
+        # locale       => 'en',  # default is 'en' (English)
+        # serial_comma => 0,     # default is 1 (true)
     );
 
     say $duration->formatted_duration;
@@ -109,10 +110,33 @@ sub _build_locale_class {
     die "Failed to create an instance of a localization class!";
 }
 
-has 'oxford_comma' => (
+=head1 What's the "serial comma"?
+
+The "serial comma", also called the "oxford comma", is an optional comma before
+the word "and" (and/or other separating words) at the end of the list. Consider
+not using a serial comma:
+
+    1 hour, 2 minutes and 3 seconds
+
+...vs. using a serial comma:
+
+    1 hour, 2 minutes, and 3 seconds
+
+This value is defined per locale, i.e. from what's most normal (...) in each
+locale, but you can override when generating an instance of this class;
+
+    my $human = DateTime::Format::Human::Duration::Simple->new(
+        from         => $from_datetime,
+        to           => $to_datetime,
+        serial_comma => 0, # turn it off for all locales
+    );
+
+=cut
+
+has 'serial_comma' => (
     isa     => 'Bool',
     is      => 'ro',
-    default => sub { shift->locale_class->oxford_comma; }
+    default => sub { shift->locale_class->serial_comma; }
 );
 
 has 'duration' => (
@@ -190,8 +214,8 @@ sub _build_formatted_duration {
         my $and       = $locale_class->get_unit_for_value( 'and' );
         my $formatted = join( ', ', @formatted );
 
-        # "Oxford comma" usage?
-        if ( scalar(@formatted) == 2 || not $self->oxford_comma ) {
+        # Use a serial comma?
+        if ( scalar(@formatted) == 2 || not $self->serial_comma ) {
             $formatted =~ s/(.+),/$1 \Q$and\E/;
         }
         else {

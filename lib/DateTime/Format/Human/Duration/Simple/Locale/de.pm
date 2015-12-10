@@ -4,7 +4,7 @@ use namespace::autoclean;
 
 extends 'DateTime::Format::Human::Duration::Simple::Locale';
 
-has '+oxford_comma' => (
+has '+serial_comma' => (
     default => 0,
 );
 

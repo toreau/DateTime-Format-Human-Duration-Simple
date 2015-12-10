@@ -35,8 +35,8 @@ our $VERSION = '0.01';
     my $duration = DateTime::Format::Human::Duration::Simple->new(
         from           => $from, # required
         to             => $to,   # required
-        # locale       => 'en',  # default is 'en' (English)
-        # serial_comma => 0,     # default is 1 (true)
+        # locale       => 'en',  # optional, default is 'en' (English)
+        # serial_comma => 1,     # optional, default is 1 (true)
     );
 
     say $duration->formatted_duration;

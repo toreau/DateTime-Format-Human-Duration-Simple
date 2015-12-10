@@ -76,7 +76,7 @@ locale, but you can override when generating an instance of this class;
         serial_comma => 0, # turn it off for all locales
     );
 
-You can read more about the serial command [on Wikipedia](https://en.wikipedia.org/wiki/Serial_comma).
+You can read more about the serial comma [on Wikipedia](https://en.wikipedia.org/wiki/Serial_comma).
 
 ## formatted\_duration
 

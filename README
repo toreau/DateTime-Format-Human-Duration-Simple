@@ -78,7 +78,7 @@ What is the "serial comma"?
             serial_comma => 0, # turn it off for all locales
         );
 
-    You can read more about the serial command on Wikipedia
+    You can read more about the serial comma on Wikipedia
     <https://en.wikipedia.org/wiki/Serial_comma>.
 
  formatted_duration

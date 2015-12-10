@@ -36,6 +36,12 @@ Version 0.01
 This is a simple class for getting a localized string representing the duration
 between two [DateTime](https://metacpan.org/pod/DateTime) objects.
 
+This class is inspired by [DateTime::Format::Human::Duration](https://metacpan.org/pod/DateTime::Format::Human::Duration), and shares its
+namespace. I feel, however, that [DateTime::Format::Human::Duration](https://metacpan.org/pod/DateTime::Format::Human::Duration) is a bit
+"heavy", and it's not updated very often. I also don't like its interface, so I
+created this class for an alternative that better suited me. If it will suit
+others, I don't know (or care), but there's always nice with alternatives. :)
+
 # METHODS
 
 ## new( %args )

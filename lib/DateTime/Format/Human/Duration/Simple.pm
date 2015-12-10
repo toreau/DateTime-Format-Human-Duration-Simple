@@ -46,6 +46,12 @@ our $VERSION = '0.01';
 This is a simple class for getting a localized string representing the duration
 between two L<DateTime> objects.
 
+This class is inspired by L<DateTime::Format::Human::Duration>, and shares its
+namespace. I feel, however, that L<DateTime::Format::Human::Duration> is a bit
+"heavy", and it's not updated very often. I also don't like its interface, so I
+created this class for an alternative that better suited me. If it will suit
+others, I don't know (or care), but there's always nice with alternatives. :)
+
 =head1 METHODS
 
 =head2 new( %args )

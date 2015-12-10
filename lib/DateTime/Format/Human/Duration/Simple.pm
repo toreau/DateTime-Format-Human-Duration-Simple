@@ -239,6 +239,8 @@ L<http://search.cpan.org/dist/DateTime-Format-Human-Duration-Simple/>
 
 =item * L<DateTime::Format::Human::Duration>
 
+=back
+
 =head1 LICENSE AND COPYRIGHT
 
 The MIT License (MIT)

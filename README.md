@@ -50,9 +50,10 @@ others, I don't know (or care), but there's always nice with alternatives. :)
 Constructs a new DateTime::Format::Human::Duration::Simple object;
 
     my $duration = DateTime::Format::Human::Duration::Simple->new(
-        from   => DateTime->new( ... ), # required
-        to     => DateTime->new( ... ), # required
-        locale => 'de',                 # optional (default = 'en')
+        from           => DateTime->new( ... ), # required
+        to             => DateTime->new( ... ), # required
+        locale         => 'de',                 # optional (default = 'en')
+        # serial_comma => 1,                    # optional, default is 1 (true)
     );
 
 # What is the "serial comma"?

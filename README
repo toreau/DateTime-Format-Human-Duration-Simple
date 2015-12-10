@@ -78,8 +78,8 @@ What is the "serial comma"?
             serial_comma => 0, # turn it off for all locales
         );
 
-    You can read more about the serial command
-    https://en.wikipedia.org/wiki/Serial_comma.
+    You can read more about the serial command on Wikipedia
+    <https://en.wikipedia.org/wiki/Serial_comma>.
 
  formatted_duration
 
@@ -147,14 +147,4 @@ LICENSE AND COPYRIGHT
     CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-POD ERRORS
-
-    Hey! The above document had some coding errors, which are explained
-    below:
-
-    Around line 79:
-
-      alternative text 'https://en.wikipedia.org/wiki/Serial_comma'
-      contains non-escaped | or /
 

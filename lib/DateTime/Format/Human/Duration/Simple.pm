@@ -131,7 +131,7 @@ locale, but you can override when generating an instance of this class;
         serial_comma => 0, # turn it off for all locales
     );
 
-You can read more about the serial command L<https://en.wikipedia.org/wiki/Serial_comma|on Wikipedia>.
+You can read more about the serial command L<on Wikipedia|https://en.wikipedia.org/wiki/Serial_comma>.
 
 =cut
 

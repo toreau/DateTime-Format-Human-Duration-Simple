@@ -110,7 +110,7 @@ sub _build_locale_class {
     die "Failed to create an instance of a localization class!";
 }
 
-=head1 What's the "serial comma"?
+=head1 What is the "serial comma"?
 
 The "serial comma", also called the "oxford comma", is an optional comma before
 the word "and" (and/or other separating words) at the end of the list. Consider
@@ -130,6 +130,8 @@ locale, but you can override when generating an instance of this class;
         to           => $to_datetime,
         serial_comma => 0, # turn it off for all locales
     );
+
+You can read more about the serial command L<https://en.wikipedia.org/wiki/Serial_comma|on Wikipedia>.
 
 =cut
 

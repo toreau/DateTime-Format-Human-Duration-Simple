@@ -55,7 +55,7 @@ Constructs a new DateTime::Format::Human::Duration::Simple object;
         locale => 'de',                 # optional (default = 'en')
     );
 
-# What's the "serial comma"?
+# What is the "serial comma"?
 
 The "serial comma", also called the "oxford comma", is an optional comma before
 the word "and" (and/or other separating words) at the end of the list. Consider
@@ -75,6 +75,8 @@ locale, but you can override when generating an instance of this class;
         to           => $to_datetime,
         serial_comma => 0, # turn it off for all locales
     );
+
+You can read more about the serial command [https://en.wikipedia.org/wiki/Serial\_comma](https://metacpan.org/pod/on&#x20;Wikipedia).
 
 ## formatted\_duration
 
@@ -138,3 +140,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+# POD ERRORS
+
+Hey! **The above document had some coding errors, which are explained below:**
+
+- Around line 134:
+
+    alternative text 'https://en.wikipedia.org/wiki/Serial\_comma' contains non-escaped | or /

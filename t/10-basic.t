@@ -55,6 +55,13 @@ my @tests = (
 
     # Own tests.
     {
+        name   => 'Test 1',
+        from   => $now,
+        to     => $now->clone->add( years => 1, months => 2, days => 3, hours => 4, minutes => 5, seconds => 61 ),
+        result => '1 year, 2 months, 3 days, 4 hours, 6 minutes, and 1 second',
+    },
+
+    {
         # Language tests
         name   => 'Test 1',
         from   => $now,
@@ -149,7 +156,7 @@ foreach ( @tests ) {
         %{$args},
     );
 
-    is( $df->formatted_duration, $_->{result}, $_->{name} );
+    is( $df->formatted, $_->{result}, $_->{name} );
 }
 
 # The End

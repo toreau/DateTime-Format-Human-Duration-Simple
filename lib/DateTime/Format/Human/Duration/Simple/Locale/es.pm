@@ -9,7 +9,7 @@ has '+serial_comma' => (
     default => 0,
 );
 
-override '_build_units' => sub {
+override '_build_translations' => sub {
     my $self = shift;
 
     return {

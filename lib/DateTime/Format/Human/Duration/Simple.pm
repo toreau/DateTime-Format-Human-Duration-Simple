@@ -11,11 +11,11 @@ describing the span of a given datetime duration.
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
@@ -39,7 +39,7 @@ our $VERSION = '0.01';
         # serial_comma => 1,     # optional, default is 1 (true)
     );
 
-    say $duration->formatted_duration;
+    say $duration->formatted;
     # 1 year, 2 months, 3 days, 4 hours, 5 minutes, and 6 seconds
 
 =head1 DESCRIPTION
@@ -137,21 +137,21 @@ sub _build_duration {
     return $self->to - $self->from;
 }
 
-=head2 formatted_duration
+=head2 formatted
 
 Returns the locale specific string describing the span of the duration in
 question.
 
 =cut
 
-has 'formatted_duration' => (
+has 'formatted' => (
     isa     => 'Maybe[Str]',
     is      => 'ro',
     lazy    => 1,
-    builder => '_build_formatted_duration',
+    builder => '_build_formatted',
 );
 
-sub _build_formatted_duration {
+sub _build_formatted {
     my $self = shift;
 
     my ( $years, $months, $weeks, $days, $hours, $minutes, $seconds, $nanoseconds ) = $self->duration->in_units( 'years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds', 'nanoseconds' );
@@ -184,17 +184,17 @@ sub _build_formatted_duration {
         # Localize the units.
         my @formatted = ();
 
-        push( @formatted, $years        . ' ' . $locale_class->get_unit_for_value('year',        $years)   ) if ( $years        > 0 );
-        push( @formatted, $months       . ' ' . $locale_class->get_unit_for_value('month',       $months)  ) if ( $months       > 0 );
-        push( @formatted, $weeks        . ' ' . $locale_class->get_unit_for_value('week',        $weeks)   ) if ( $weeks        > 0 );
-        push( @formatted, $days         . ' ' . $locale_class->get_unit_for_value('day',         $days)    ) if ( $days         > 0 );
-        push( @formatted, $hours        . ' ' . $locale_class->get_unit_for_value('hour',        $hours)   ) if ( $hours        > 0 );
-        push( @formatted, $minutes      . ' ' . $locale_class->get_unit_for_value('minute',      $minutes) ) if ( $minutes      > 0 );
-        push( @formatted, $seconds      . ' ' . $locale_class->get_unit_for_value('second',      $seconds) ) if ( $seconds      > 0 );
-        push( @formatted, $milliseconds . ' ' . $locale_class->get_unit_for_value('millisecond', $seconds) ) if ( $milliseconds > 0 );
-        push( @formatted, $nanoseconds  . ' ' . $locale_class->get_unit_for_value('nanosecond',  $seconds) ) if ( $nanoseconds  > 0 );
+        push( @formatted, $years        . ' ' . $locale_class->get_translation_for_value('year',        $years)   ) if ( $years        > 0 );
+        push( @formatted, $months       . ' ' . $locale_class->get_translation_for_value('month',       $months)  ) if ( $months       > 0 );
+        push( @formatted, $weeks        . ' ' . $locale_class->get_translation_for_value('week',        $weeks)   ) if ( $weeks        > 0 );
+        push( @formatted, $days         . ' ' . $locale_class->get_translation_for_value('day',         $days)    ) if ( $days         > 0 );
+        push( @formatted, $hours        . ' ' . $locale_class->get_translation_for_value('hour',        $hours)   ) if ( $hours        > 0 );
+        push( @formatted, $minutes      . ' ' . $locale_class->get_translation_for_value('minute',      $minutes) ) if ( $minutes      > 0 );
+        push( @formatted, $seconds      . ' ' . $locale_class->get_translation_for_value('second',      $seconds) ) if ( $seconds      > 0 );
+        push( @formatted, $milliseconds . ' ' . $locale_class->get_translation_for_value('millisecond', $seconds) ) if ( $milliseconds > 0 );
+        push( @formatted, $nanoseconds  . ' ' . $locale_class->get_translation_for_value('nanosecond',  $seconds) ) if ( $nanoseconds  > 0 );
 
-        my $and       = $locale_class->get_unit_for_value( 'and' );
+        my $and       = $locale_class->get_translation_for_value( 'and' );
         my $formatted = join( ', ', @formatted );
 
         # Use a serial comma?

@@ -5,7 +5,7 @@ use utf8;
 
 extends 'DateTime::Format::Human::Duration::Simple::Locale';
 
-override '_build_units' => sub {
+override '_build_translations' => sub {
     my $self = shift;
 
     return {

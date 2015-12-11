@@ -8,14 +8,14 @@ has 'serial_comma' => (
     default => 1,
 );
 
-has 'units' => (
+has 'translations' => (
     isa     => 'HashRef[ArrayRef[Str]]',
     is      => 'ro',
     lazy    => 1,
-    builder => '_build_units',
+    builder => '_build_translations',
 );
 
-sub _build_units {
+sub _build_translations {
     my $self = shift;
 
     return {
@@ -34,16 +34,16 @@ sub _build_units {
     };
 }
 
-sub get_unit_for_value {
+sub get_translation_for_value {
     my $self  = shift;
     my $unit  = shift;
     my $value = shift;
 
     unless ( defined $value ) {
-        return $self->units->{$unit}->[0];
+        return $self->translations->{$unit}->[0];
     }
 
-    return ( $value == 1 ) ? $self->units->{$unit}->[0] : $self->units->{$unit}->[1];
+    return ( $value == 1 ) ? $self->translations->{$unit}->[0] : $self->translations->{$unit}->[1];
 }
 
 __PACKAGE__->meta->make_immutable;

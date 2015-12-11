@@ -111,36 +111,18 @@ sub _build_locale_class {
     die "Failed to create an instance of a localization class!";
 }
 
-=head1 What is the "serial comma"?
-
-The "serial comma", also called the "oxford comma", is an optional comma before
-the word "and" (and/or other separating words) at the end of the list. Consider
-not using a serial comma:
-
-    1 hour, 2 minutes and 3 seconds
-
-...vs. using a serial comma:
-
-    1 hour, 2 minutes, and 3 seconds
-
-This value is defined per locale, i.e. from what's most normal (...) in each
-locale, but you can override when generating an instance of this class;
-
-    my $human = DateTime::Format::Human::Duration::Simple->new(
-        from         => $from_datetime,
-        to           => $to_datetime,
-        serial_comma => 0, # turn it off for all locales
-    );
-
-You can read more about the serial comma L<on Wikipedia|https://en.wikipedia.org/wiki/Serial_comma>.
-
-=cut
-
 has 'serial_comma' => (
     isa     => 'Bool',
     is      => 'ro',
     default => sub { shift->locale_class->serial_comma; }
 );
+
+=head2 duration
+
+Returns the current L<DateTime::Duration> object, which is used by this class
+behind the scenes to generate the localized output.
+
+=cut
 
 has 'duration' => (
     isa     => 'DateTime::Duration',
@@ -229,6 +211,29 @@ sub _build_formatted_duration {
 
     }
 }
+
+=head1 What is the "serial comma"?
+
+The "serial comma", also called the "oxford comma", is an optional comma before
+the word "and" (and/or other separating words) at the end of the list. Consider
+not using a serial comma:
+
+    1 hour, 2 minutes and 3 seconds
+
+...vs. using a serial comma:
+
+    1 hour, 2 minutes, and 3 seconds
+
+This value is defined per locale, i.e. from what's most normal (...) in each
+locale, but you can override when generating an instance of this class;
+
+    my $human = DateTime::Format::Human::Duration::Simple->new(
+        from         => $from_datetime,
+        to           => $to_datetime,
+        serial_comma => 0, # turn it off for all locales
+    );
+
+You can read more about the serial comma L<on Wikipedia|https://en.wikipedia.org/wiki/Serial_comma>.
 
 =head1 AUTHOR
 

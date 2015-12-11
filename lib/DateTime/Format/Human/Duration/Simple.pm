@@ -154,9 +154,7 @@ has 'formatted_duration' => (
 sub _build_formatted_duration {
     my $self = shift;
 
-    my $duration = $self->duration;
-
-    my ( $years, $months, $weeks, $days, $hours, $minutes, $seconds, $nanoseconds ) = $duration->in_units( 'years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds', 'nanoseconds' );
+    my ( $years, $months, $weeks, $days, $hours, $minutes, $seconds, $nanoseconds ) = $self->duration->in_units( 'years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds', 'nanoseconds' );
 
     # Convert the values to absolute values in case there
     # are negatives.
@@ -169,7 +167,7 @@ sub _build_formatted_duration {
     $seconds     = abs( $seconds     );
     $nanoseconds = abs( $nanoseconds );
 
-    # Calculate the number of milliseconds, if necessary.
+    # Calculate the number of milliseconds.
     my $milliseconds = 0;
 
     if ( $nanoseconds > 0 ) {
@@ -207,6 +205,7 @@ sub _build_formatted_duration {
             $formatted =~ s/(.+,)/$1 \Q$and\E/;
         }
 
+        # Return.
         return $formatted;
 
     }

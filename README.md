@@ -56,6 +56,16 @@ Constructs a new DateTime::Format::Human::Duration::Simple object;
         # serial_comma => 1,                    # optional, default is 1 (true)
     );
 
+## duration
+
+Returns the current [DateTime::Duration](https://metacpan.org/pod/DateTime::Duration) object, which is used by this class
+behind the scenes to generate the localized output.
+
+## formatted\_duration
+
+Returns the locale specific string describing the span of the duration in
+question.
+
 # What is the "serial comma"?
 
 The "serial comma", also called the "oxford comma", is an optional comma before
@@ -78,11 +88,6 @@ locale, but you can override when generating an instance of this class;
     );
 
 You can read more about the serial comma [on Wikipedia](https://en.wikipedia.org/wiki/Serial_comma).
-
-## formatted\_duration
-
-Returns the locale specific string describing the span of the duration in
-question.
 
 # AUTHOR
 
